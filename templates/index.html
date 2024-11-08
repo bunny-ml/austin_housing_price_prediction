@@ -1,9 +1,37 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>foobar</title>
-	</head>
-	<body>
-		<div>foobar</div>
-	</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Housing Price Prediction</h1>
+        <form id="predictionForm">
+            <label>Bedrooms:</label>
+            <input type="number" id="bedrooms" required>
+
+            <label>Stories:</label>
+            <input type="number" id="stories" required>
+
+            <label>Spa (Yes/No):</label>
+            <input type="text" id="spa" required>
+
+            <label>View (Yes/No):</label>
+            <input type="text" id="view" required>
+
+            <label>Garage (Yes/No):</label>
+            <input type="text" id="garage" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        
+        <div id="predictions">
+            <!-- Prediction results will be displayed here -->
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
 </html>
