@@ -1,0 +1,276 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    color: #eeeeee;
+    background-color: #121212;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Particles Background */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+/* Top Header Bar */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    padding: 10px 20px;
+    background-color: #000022;
+    color: #fff;
+    position: sticky;
+    top:0;
+    /* z-index: 100; */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    height: 100%;
+}
+
+.top-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.top-header .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.top-header .logo span {
+    font-size: 18px;
+    font-weight: bold;
+}
+.cta-button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none; 
+    font-size: 16px;
+    font-weight: bold;
+    position: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #fff;
+    transform: scale(1.05);
+    text-decoration: none;
+}
+.hamburger-menu {
+    display: none; /* Hidden by default */
+    flex-direction: column-reverse;
+    cursor: pointer;
+}
+
+.hamburger-menu .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    
+    /* right: 3%; */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex; /* Show hamburger menu on mobile */
+        position: relative;
+        right: 0%;
+    }
+
+    .navbar {
+        display: none; /* Hide nav by default on mobile */
+        flex-direction: column; /* Stack items vertically */
+        width: 100%;
+        background-color: #333; /* Match header background */
+        position: absolute; /* Position it below the header */
+        top: 60px; /* Adjust based on header height */
+        left: 0;
+    }
+
+    .navbar.active {
+        display: flex; /* Show nav when active */
+    }
+
+    .navbar a {
+        margin:0; /* Space out items */
+        padding: 10px; /* Add padding for better touch targets */
+    }
+}
+
+/* Section Styles */
+.main-content {
+    text-align: center;
+    padding: 100px 20px 50px;
+}
+.main-content h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #4caf50;
+}
+
+.main-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #4caf50;
+}
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    
+    background-color: #000022;
+    color: #888;
+    font-size: 14px;
+}
+
+footer a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], textarea , select{
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #444; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  input[type=number], textarea , select{
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #444; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  input[type=email] {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #444; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  
+  /* Style the submit button with a specific background color etc */
+  input[type=submit] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* When moving the mouse over the submit button, add a darker green color */
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+
+/* Input and Textarea Styles */
+input, textarea , select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #333; /* Consistent dark background */
+    color: #fff; /* White text */
+    border-radius: 5px;
+    outline: none; /* Remove browser's default outline */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth interaction */
+}
+/* Focus State */
+input:focus, textarea:focus ,select:focus{
+    background-color: #444; /* Slightly lighter background on focus */
+    color: #fff; /* Ensure text is visible */
+    border: 1px solid #4caf50; /* Highlight border with green */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Optional: Add glow effect */
+}
+  
+/* Contact Section */
+form {
+    display: block;
+    max-width: 600px;
+    margin: auto;
+    background-color: #1e1e1e; /* Dark background for the form */
+    padding: 20px;
+    border-radius: 10px;
+}
+  /* Add a background color and some padding around the form */
+  .container {
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px 20px;
+    
+  }
+
+  .container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #4caf50;
+ }
+
+  .container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #4caf50;
+ }

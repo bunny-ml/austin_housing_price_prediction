@@ -1,0 +1,28 @@
+{
+    "city": [
+        "pflugerville",
+        "del valle",
+        "austin",
+        "driftwood",
+        "manor",
+        "dripping springs",
+        "manchaca",
+        "west lake hills",
+        "road"
+    ],
+    "streetAddress": [
+        "pflugerville",
+        "del valle",
+        "austin",
+        "driftwood",
+        "manor",
+        "dripping springs",
+        "manchaca",
+        "west lake hills",
+        "road"
+    ],
+    "Yes_no": [
+        "Yes",
+        "No"
+    ]
+}

@@ -3,35 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Housing Price Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta name="description" content="Recommendation System">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="https://abhishek-chaudhary-ml-portfolio.netlify.app/images/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Car Price Prediction</title>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Housing Price Prediction</h1>
-        <form id="predictionForm">
-            <label>Bedrooms:</label>
-            <input type="number" id="bedrooms" required>
-
-            <label>Stories:</label>
-            <input type="number" id="stories" required>
-
-            <label>Spa (Yes/No):</label>
-            <input type="text" id="spa" required>
-
-            <label>View (Yes/No):</label>
-            <input type="text" id="view" required>
-
-            <label>Garage (Yes/No):</label>
-            <input type="text" id="garage" required>
-
-            <button type="submit">Predict</button>
-        </form>
-        
-        <div id="predictions">
-            <!-- Prediction results will be displayed here -->
+    <header class="top-header">
+        <div class="logo">
+            <img src="https://abhishek-chaudhary-ml-portfolio.netlify.app/images/logo.png" alt="Logo">
+            <span>Car Price Prediction</span>
         </div>
-    </div>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="navbar" id="navbar">
+            <a href="https://abhishek-chaudhary-ml-portfolio.netlify.app/" class="cta-button">Home Page</a>
+            <a href="#contact" class="cta-button">Contact</a>
+        </nav>
+    </header>
+
+    <div id="particles-js"></div>
+
+    <main class="main-content">
+        <h1>House Price Prediction</h1>
+
+        <form action="{{ url_for('prediction') }}" method="post">
+
+            <label for="city">City name</label>
+            <select name="city" required>
+                {% for City in options['city'] %}
+                    <option value="{{ City }}">{{ City }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="streetAddress">Street Address</label>
+            <select name="streetAddress" required>
+                {% for a in options['streetAddress'] %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+
+
+            <label for="propertyTaxRate">Property TaxRate</label>
+            <input type="number" name="propertyTaxRate" required><br>
+
+            <label for="garageSpaces">Garage Spaces</label>
+            <input type="number" name="garageSpaces" required><br>
+
+            <label for="streetAddress">Street Address</label>
+            <select name="streetAddress" required>
+                {% for a in options['streetAddress'] %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="hasAssociation">Association</label>
+            <select name="hasAssociation" required>
+                {% for a in options['Yes_no'] %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="hasCooling">Cooling</label>
+            <select name="hasCooling" required>
+                {% for a in options['Yes_no'] %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="hasGarage">Garage</label>
+            <select name="hasGarage" required>
+                {% for a in options['Yes_no'] %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="hasHeating">Heating</label>
+            <select name="hasHeating" required>
+                {% for a in options['Yes_no'] %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+            <label for="hasSpa">Spa</label>
+            <select name="hasSpa" required>
+                {% for a in options['Yes_no'] %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="hasView">View</label>
+            <select name="hasView" required>
+                {% for a in options['Yes_no'] %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="homeType">homeType</label>
+            <select name="homeType" required>
+                {% for a in options['Yes_no'] %}
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="parkingSpaces">Parking Spaces</label>
+            <input type="number" name="parkingSpaces" required><br>
+
+            <label for="yearBuilt"> yearBuilt</label>
+            <select name="homeType" required>
+                {% for a in options['Yes_no'] %}                     
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+
+            <!-- <label for="numPriceChanges">Parking Spaces</label>
+            <input type="number" name="numPriceChanges" required><br> -->
+
+            <label for="latestPriceSource"> latestPriceSource</label>
+            <select name="latestPriceSource" required>
+                {% for a in options['Yes_no'] %}                     
+                    <option value="{{ a }}">{{ a }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="numOfAccessibilityFeatures">Parking Spaces</label>
+            <input type="number" name="numOfAccessibilityFeatures" required><br>
+            
+            <label for="numOfAppliances">Parking Spaces</label>
+            <input type="number" name="numOfAppliances" required><br>
+
+            <label for="numOfParkingFeatures">Parking Spaces</label>
+            <input type="number" name="numOfParkingFeatures" required><br>
+                
+            <label for="numOfPatioAndPorchFeatures ">Parking Spaces</label>
+            <input type="number" name="numOfPatioAndPorchFeatures" required><br>
+          
+            <label for="numOfSecurityFeatures ">Parking Spaces</label>
+            <input type="number" name="numOfSecurityFeatures" required><br>
+         
+            <label for="numOfWaterfrontFeatures ">Parking Spaces</label>
+            <input type="number" name="numOfWaterfrontFeatures" required><br>
+       
+            <label for="numOfWindowFeatures  ">Parking Spaces</label>
+            <input type="number" name="numOfWindowFeatures" required><br>
+
+            <label for="numOfCommunityFeatures  ">Parking Spaces</label>
+            <input type="number" name="numOfCommunityFeatures" required><br>
+         
+            <label for="lotSizeSqFt  ">Parking Spaces</label>
+            <input type="number" name="lotSizeSqFt" required><br>
+
+            <label for="livingAreaSqFt  ">Parking Spaces</label>
+            <input type="number" name="livingAreaSqFt" required><br>
+
+            <label for="numOfPrimarySchools ">Parking Spaces</label>
+            <input type="number" name="numOfPrimarySchools" required><br>
+
+            <label for="numOfElementarySchools  ">Parking Spaces</label>
+            <input type="number" name="numOfElementarySchools" required><br>
+
+            <label for="numOfMiddleSchools  ">Parking Spaces</label>
+            <input type="number" name="numOfMiddleSchools" required><br>
+
+            <label for="numOfHighSchools  "> numOfHighSchools</label>
+            <input type="number" name="numOfHighSchools" required><br>
+
+            <label for="avgSchoolDistance  ">avgSchoolDistance </label>
+            <input type="number" name="avgSchoolDistance" required><br>
+
+            <label for="avgSchoolRating">avgSchoolRating</label>
+            <input type="number" name="avgSchoolRating" required><br>
+
+            <label for="avgSchoolSize">avgSchoolSize</label>
+            <input type="number" name="avgSchoolSize" required><br>
+
+            <label for="MedianStudentsPerTeacher">MedianStudentsPerTeacher</label>
+            <input type="number" name="MedianStudentsPerTeacher" required><br>
+
+            <label for="numOfBathrooms">numOfBathrooms</label>
+            <input type="number" name="numOfBathrooms" required><br>
+
+            <label for="numOfBedrooms">numOfBedrooms </label>
+            <input type="number" name="numOfBedrooms" required><br>
+
+            <label for="numOfStories">numOfStories </label>
+            <input type="number" name="numOfStories" required><br>
+
+
+livingAreaSqFt                0
+           0
+        0
+            0
+              0
+avgSchoolDistance             0
+               0
+                 0
+      0
+                0
+                 0
+  
+            
+            <input type="submit" value="Predict Price">
+        </form>
+        {% if prediction %}
+        <div class="prediction-result">
+            <h2>{{ prediction }}</h2>
+        </div>
+    {% endif %}
+    
+    {% if error %}
+        <div class="error-message">
+            <p style="color: red;">{{ error }}</p>
+        </div>
+    {% endif %}
+    </main>
+
+    <section id="contact" class="main-content">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" autocomplete="off" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" autocomplete="off" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" autocomplete="off" required></textarea>
+            <input type="submit" value="Send Message">
+            <p id="form-response" style="display:none; color: green;">Thank you! Your message has been sent.</p>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 Abhishek. All rights reserved. | <a href="https://github.com/bunny-ml">GitHub</a> | <a href="https://www.linkedin.com/in/abhishek-chaudhary26/">LinkedIn</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://abhishek-chaudhary-ml-portfolio.netlify.app/script.mini.js"></script>
 </body>
 </html>
